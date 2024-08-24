@@ -9,38 +9,38 @@ const Dashboard = ({ jobs }) => {
     const rejections = jobs.filter(job => job.status === 'Rejected').length;
 
     return (
-        <div className="d-flex justify-content-around">
-            <Card style={{ width: '18rem' }}>
+        <div className="d-flex justify-content-between">
+            <Card style={{ width: '14rem' }}>
                 <Card.Body>
-                    <Card.Title>Total Applications</Card.Title>
+                    <Card.Title className="custom-card-title">Total Applications</Card.Title>
                     <Card.Text>{totalJobs}</Card.Text>
                 </Card.Body>
             </Card>
 
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '14rem' }}>
                 <Card.Body>
-                    <Card.Title>Applied</Card.Title>
+                    <Card.Title className="custom-card-title">Applied</Card.Title>
                     <Card.Text>{appliedJobs}</Card.Text>
                 </Card.Body>
             </Card>
 
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '14rem' }}>
                 <Card.Body>
-                    <Card.Title>Interviews Scheduled</Card.Title>
+                    <Card.Title className="custom-card-title">Interviews Scheduled</Card.Title>
                     <Card.Text>{interviews}</Card.Text>
                 </Card.Body>
             </Card>
 
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '14rem' }}>
                 <Card.Body>
-                    <Card.Title>Offers Received</Card.Title>
+                    <Card.Title className="custom-card-title">Offers Received</Card.Title>
                     <Card.Text>{offers}</Card.Text>
                 </Card.Body>
             </Card>
 
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '14rem' }}>
                 <Card.Body>
-                    <Card.Title>Rejections</Card.Title>
+                    <Card.Title className="custom-card-title">Rejections</Card.Title>
                     <Card.Text>{rejections}</Card.Text>
                 </Card.Body>
             </Card>
