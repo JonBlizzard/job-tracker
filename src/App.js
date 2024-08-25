@@ -8,7 +8,6 @@ import { Container } from 'react-bootstrap';
 const App = () => {
     const [jobs, setJobs] = useState([]);
 
-    // Load jobs from local storage when the component mounts
     useEffect(() => {
         const savedJobs = localStorage.getItem('jobs');
         if (savedJobs) {
@@ -16,7 +15,6 @@ const App = () => {
         }
     }, []);
 
-    // Function to save jobs to local storage
     const saveJobsToLocalStorage = (jobs) => {
         localStorage.setItem('jobs', JSON.stringify(jobs));
     };
@@ -35,6 +33,20 @@ const App = () => {
         saveJobsToLocalStorage(updatedJobs);
     };
 
+    const deleteJob = (index) => {
+        const updatedJobs = jobs.filter((_, i) => i !== index);
+        setJobs(updatedJobs);
+        saveJobsToLocalStorage(updatedJobs);
+    };
+
+    const editJob = (index, updatedJob) => {
+        const updatedJobs = jobs.map((job, i) => (
+            i === index ? updatedJob : job
+        ));
+        setJobs(updatedJobs);
+        saveJobsToLocalStorage(updatedJobs);
+    };
+
     return (
         <div>
             <NavigationBar />
@@ -44,10 +56,10 @@ const App = () => {
                 <h2 className="mt-5" id="dashboard">Dashboard</h2>
                 <Dashboard jobs={jobs} />
                 <h2 className="mt-5">Job List</h2>
-                <JobList jobs={jobs} onUpdateStatus={updateJobStatus} />
+                <JobList jobs={jobs} onUpdateStatus={updateJobStatus} onDeleteJob={deleteJob} onEditJob={editJob} />
             </Container>
         </div>
     );
-}
+};
 
 export default App;
